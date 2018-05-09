@@ -1,11 +1,12 @@
 
 <?php include 'inc/header.php'; ?>
-      
+  
   
 
   <div class="container">
     <h1>Hello, world!</h1>
-
+    
+    <!-- FORMULAIRE -->
     <form class="form-horizontal" style="border:1px solid #ececec; margin: 50px 0; padding: 30px;">
       <fieldset>
 

@@ -25,7 +25,6 @@
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-6"> 
 					<ul class="nav navbar-nav"> 
 						<li class="active"><a href="<?php echo FILEROOT; ?>">Home</a></li> 
-						<li><a href="#"></a></li> 
 					</ul> 
 				</div> 
 			</div> 
