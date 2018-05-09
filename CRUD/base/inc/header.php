@@ -1,10 +1,12 @@
+<?php include "config/config.php"; ?>
+
 <!DOCTYPE html>
 <html lang="en">
 	<head>
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>Medharik - PHP CRUD</title>
+		<title><?php echo SITENAME; ?></title>
 		<!-- Bootstrap -->
 		<link href="css/bootstrap.min.css" rel="stylesheet">
 	</head>
@@ -18,12 +20,11 @@
 						<span class="icon-bar"></span> 
 						<span class="icon-bar"></span> 
 					</button> 
-					<a href="#" class="navbar-brand">Abdellah</a> 
+					<a href="<?php echo FILEROOT; ?>" class="navbar-brand">Abdellah</a> 
 				</div> 
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-6"> 
 					<ul class="nav navbar-nav"> 
-						<li class="active"><a href="#">Home</a></li> 
-						<li><a href="#"></a></li> 
+						<li class="active"><a href="<?php echo FILEROOT; ?>">Home</a></li> 
 						<li><a href="#"></a></li> 
 					</ul> 
 				</div> 
