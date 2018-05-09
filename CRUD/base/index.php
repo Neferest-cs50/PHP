@@ -8,8 +8,7 @@
   <!-- Ajouter -->
   <?php
 
-    if (isset($_POST["name"])) {
-      
+    if (isset($_POST["name"]) && !isset($_POST["idu"])) {
       $op = "";
       $class = "";
       $msg = "";
@@ -36,6 +35,29 @@
 
       $db->delete($id);
       
+      header("location:index.php?op=$op");
+    }
+  ?>
+
+  <!-- Modification -->
+  <?php
+    // When the user clicks on Update
+    if (isset($_GET["idu"])) {
+      extract($_GET);
+      $up_person = $db->get($idu);
+      
+      $btn = "Modifier";
+
+    }
+
+    // If the form was changed and submitted
+    if (isset($_POST["idu"])) {
+      extract($_POST); // $idu, $name, $job
+
+      $op = "upd";
+
+      $db->update($idu, $name, $job);
+
       header("location:index.php?op=$op");
     }
   ?>
@@ -78,11 +100,15 @@
     <form class="form-horizontal" style="border:1px solid #ececec; margin: 50px 0; padding: 30px;" method="POST" action="<?php FILEROOT; ?>">
       <fieldset>
 
+        <?php if (isset($_GET["idu"])) : ?>
+          <input type="hidden" value="<?php echo $_GET['idu']; ?>" name="idu">
+        <?php endif; ?>
+
         <!-- Text input-->
         <div class="form-group">
           <label class="col-md-4 control-label" for="name">Nom complet</label>  
           <div class="col-md-4">
-          <input id="name" name="name" type="text" placeholder="Nom complet" class="form-control input-md" required="">
+          <input id="name" name="name" type="text" placeholder="Nom complet" class="form-control input-md" required="" value="<?php echo (isset($up_person)) ? $up_person['name'] : ""; ?>">
             
           </div>
         </div>
@@ -91,7 +117,7 @@
         <div class="form-group">
           <label class="col-md-4 control-label" for="Job">Emploie</label>  
           <div class="col-md-4">
-          <input id="job" name="job" type="text" placeholder="Emploie" class="form-control input-md">
+          <input id="job" name="job" type="text" placeholder="Emploie" class="form-control input-md" value="<?php echo (isset($up_person)) ? $up_person['job'] : ""; ?>">
             
           </div>
         </div>
@@ -126,7 +152,7 @@
         <td><?php echo $people['name']; ?></td>
         <td><?php echo $people['job']; ?></td>
         <td>
-          <a class="btn btn-info btn-xs" href="#">
+          <a class="btn btn-info btn-xs" href="<?php echo FILEROOT; ?>?idu=<?php echo $people["id"]; ?>">
             <span class="glyphicon glyphicon-edit"></span> Modifier
           </a>
           <a href="<?php echo FILEROOT; ?>?id=<?php echo $people["id"]; ?>" class="btn btn-danger btn-xs">

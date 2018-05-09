@@ -49,10 +49,10 @@
         }
 
         // Update a person's name or job or both
-        public function update($name, $job) {
-            $this->stmt = $this->conn->prepare("UPDATE people SET name = ?, job = ?");
+        public function update($id, $name, $job) {
+            $this->stmt = $this->conn->prepare("UPDATE people SET name = ?, job = ? WHERE id = ?");
             
-            if ($this->stmt->execute(array($name, $job))) {
+            if ($this->stmt->execute(array($name, $job, $id))) {
                 return true;
             } else {
                 return false;
