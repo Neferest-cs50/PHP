@@ -9,7 +9,7 @@
 		<link href="css/bootstrap.min.css" rel="stylesheet">
 	</head>
 	<body>
-		<nav class="navbar navbar-default navbar-static-top"> 
+		<nav class="navbar navbar-inverse navbar-static-top"> 
 			<div class="container-fluid"> 
 				<div class="navbar-header"> 
 					<button type="button" class="collapsed navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-6" aria-expanded="false"> 
