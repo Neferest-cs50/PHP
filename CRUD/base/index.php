@@ -1,13 +1,21 @@
 
 <?php include 'inc/header.php'; ?>
   
+  <?php include "Core/Database.php"; ?>
   
+  <!-- Start -->
+  <?php
+  
+
+  
+  ?>
+  <!-- End -->
 
   <div class="container">
     <h1>Hello, world!</h1>
     
     <!-- FORMULAIRE -->
-    <form class="form-horizontal" style="border:1px solid #ececec; margin: 50px 0; padding: 30px;">
+    <form class="form-horizontal" style="border:1px solid #ececec; margin: 50px 0; padding: 30px;" method="POST" action="<?php FILEROOT; ?>">
       <fieldset>
 
         <!-- Text input-->

@@ -29,19 +29,34 @@
         // Delete from people table a person
         public function delete($id) {
             $this->stmt = $this->conn->prepare("DELETE FROM people WHERE id = ?");
-            $this->stmt->execute([$id]);
+            
+            if ($this->stmt->execute(array($id))) {
+                return true;
+            } else {
+                return false;
+            }
         }
         
         // Add to people table someone
         public function add($name, $job) {
             $this->stmt = $this->conn->prepare("INSERT INTO people(name, job) VALUES (?, ?)");
-            $this->stmt->execute(array($name, $job));
+
+            if ($this->stmt->execute(array($name, $job))) {
+                return true;
+            } else {
+                return false;
+            }
         }
 
         // Update a person's name or job or both
         public function update($name, $job) {
             $this->stmt = $this->conn->prepare("UPDATE people SET name = ?, job = ?");
-            $this->stmt->execute(array($name, $job));
+            
+            if ($this->stmt->execute(array($name, $job))) {
+                return true;
+            } else {
+                return false;
+            }
         }
 
         // Get all the people
