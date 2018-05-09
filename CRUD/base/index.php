@@ -4,10 +4,9 @@
   <?php include "Core/Database.php"; ?>
   
   <!-- Start -->
+
+  <!-- Ajouter -->
   <?php
-    
-    $btn = "ajouter";
-    
 
     if (isset($_POST["name"])) {
       
@@ -22,16 +21,26 @@
         
         // Add
         $db->add($name, $job);
-      } else {
-        // Update
-        $db->update($name, $job);
-      }
+      } 
 
       header("location:index.php?op=$op");
     }
 
   ?>
+  
+  <!-- Suppression -->
+  <?php 
+    if (isset($_GET['id'])) {
+      extract($_GET); // id
+      $op = "del";
 
+      $db->delete($id);
+      
+      header("location:index.php?op=$op");
+    }
+  ?>
+
+  <!-- Set message and class Values -->
   <?php 
     // If Get "op" 
     if (isset($_GET['op'])) {
@@ -44,7 +53,7 @@
           break;
         case "del":
           $msg = "Suppression succès!";
-          $class = "success";
+          $class = "danger";
           break;
         case "upd":
           $msg = "Modification faites avec succès!";
@@ -120,7 +129,7 @@
           <a class="btn btn-info btn-xs" href="#">
             <span class="glyphicon glyphicon-edit"></span> Modifier
           </a>
-          <a href="#" class="btn btn-danger btn-xs">
+          <a href="<?php echo FILEROOT; ?>?id=<?php echo $people["id"]; ?>" class="btn btn-danger btn-xs">
             <span class="glyphicon glyphicon-remove"></span> Supprimer
           </a>
         </td>
