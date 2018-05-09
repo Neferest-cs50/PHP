@@ -64,7 +64,7 @@
             $this->stmt = $this->conn->prepare("SELECT * FROM people");
             $this->stmt->execute([]);
 
-            return $stmt->fetchAll();
+            return $this->stmt->fetchAll();
         }
 
         // Get one person
@@ -72,7 +72,7 @@
             $this->stmt = $this->conn->prepare("SELECT * FROM people WHERE id = ?");
             $this->stmt->execute([$id]);
 
-            return $stmt->fetch();
+            return $this->stmt->fetch();
         }
     }
 
